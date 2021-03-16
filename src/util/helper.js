@@ -1,5 +1,5 @@
 const { driver } = require("./driver");
-const { toastMessage, toastCloseButton } = require("../ManageTaskElement");
+const { toastMessage, toastCloseButton } = require("../util/element");
 const assert = require("assert");
 const { until } = require("selenium-webdriver");
 
