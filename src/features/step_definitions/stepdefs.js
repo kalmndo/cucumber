@@ -1,4 +1,5 @@
 const { Given, Then } = require("@cucumber/cucumber");
+const { goToManageTaskClaimMenu, goToWorkbasketMenu } = require("../../page/home");
 const {
   loginPage,
   setUsernamAndPassword,
@@ -10,7 +11,7 @@ const {
   transferCaseToRightUser,
 } = require("../../page/manageTask");
 const { viewDetailCase } = require("../../page/workBasket");
-
+const { click } = require("../../util/helper");
 const { caNum, selectCaseButton } = require("../../util/element");
 
 Given("I am on the pruhub login page", async function () {

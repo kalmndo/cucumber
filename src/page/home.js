@@ -4,6 +4,8 @@ const {
   loadingWraper,
   claimManageTask,
   claimManageTaskUrl,
+  workBasketMenu,
+  workBasketUrl
 } = require("../util/element");
 const { clickAndWaitPageLoad, waitInvisibility } = require("../util/helper");
 
@@ -26,7 +28,7 @@ const goToManageTaskClaimMenu = async () => {
 };
 
 const goToWorkbasketMenu = async () => {
-  clickMenu(WorkbasketMenu, workbasketUrl);
+  clickMenu(workBasketMenu, workBasketUrl);
 };
 
 module.exports = {

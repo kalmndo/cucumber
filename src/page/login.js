@@ -1,3 +1,4 @@
+const { Key, By } = require("selenium-webdriver");
 const { driver } = require("../util/driver");
 const { loginInput } = require("../util/element");
 

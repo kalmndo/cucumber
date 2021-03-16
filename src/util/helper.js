@@ -63,7 +63,7 @@ const waitPageLoadUrl = async (url) => {
     const el = await wait.getText();
     assert.strictEqual(el === url);
   } catch (error) {
-    console.log("waitPageLoadUrl error", err);
+    console.log("waitPageLoadUrl error", error);
   }
 };
 

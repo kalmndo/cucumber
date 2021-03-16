@@ -18,6 +18,7 @@ const {
 } = require("../util/helper");
 
 const { driver } = require("../util/driver");
+const { By } = require("selenium-webdriver");
 
 const searchCaseByClaimUnique = async (claimUniqueNumber) => {
   try {
@@ -47,30 +48,32 @@ const clickAndWaitToast = async (ele) => {
 
 const checkToastMsgAfterTransferCase = async () => {
   const msg = await driver.findElement(toastMessage).getText();
-  const expectedToastMsg = "Saved Success";
+  const isItGood = msg.includes("transfer OK");
   const expectedToastMsg2 =
     "ERROR: Task already claim, please clear session or transfer another task.";
 
-  if (msg !== expectedToastMsg) {
+  if (!isItGood) {
     await assertToastMsg(expectedToastMsg2);
   } else {
-    await assertToastMsg(expectedToastMsg);
+    await assertToastMsg(msg);
   }
 };
 
 const transferCaseToRightUser = async () => {
   await click(transferButton);
   const searchUser = await driver.findElement(searchUserField);
-  let attempts = 0;
-  while (attempts < 2) {
-    try {
-      await sleep(200);
-      await searchUser.sendKeys("360718");
-      await click("click label dam");
-    } catch (error) {
-      console.log("error => transferCaseToRightUser");
-    }
+
+  try {
+    await sleep(200);
+    searchUser.sendKeys("360718");
+    await sleep(2000);
+    await click(
+      By.xpath("//span[contains(.,'360718')]")
+    );
+  } catch (error) {
+    console.log("error => transferCaseToRightUser", error);
   }
+
   await clickAndWaitToast(takeActionButton);
   await checkToastMsgAfterTransferCase();
   await sleep(1000);
