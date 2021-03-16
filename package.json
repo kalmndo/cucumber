@@ -1,5 +1,5 @@
 {
-  "name": "cuucmber",
+  "name": "automation-testing-cucucmber-pruhub",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "cucumber-js",
     "start": "cucumber-js ./src/features/"
   },
-  "author": "adam",
+  "author": "Adam Kalamondo",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
