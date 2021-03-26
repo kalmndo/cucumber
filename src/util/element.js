@@ -1,6 +1,6 @@
 const { By } = require("selenium-webdriver");
 
-const loadingWraper = By.xpath("//html/body/ion-app/ion-loading/ion-backdrop");
+const loadingWraper = By.xpath("//div[@class='loading-content'][contains(.,'Please wait...')]");
 
 const caNumberField = By.xpath(
   "//input[contains(@ng-reflect-placeholder,'Type Claim Unique here')]"
@@ -20,14 +20,20 @@ const claimManageTask = By.xpath(
 const claimManageTaskUrl =
   "https://pruhub-stg.pru.intranet.asia/pruhub-2/#/manage-task-claim";
 
-const caNum = "CLAIM_2021030221570034936";
+const caNum = "CLAIM_2021032511360025836";
 const selectCaseButton = By.xpath("//input[contains(@id,'item_0')]");
 const toastMessage = By.xpath("//div[@class='toast-message']");
 const takeActionButton = By.xpath("//span[contains(.,'Take Action')]");
 const toastCloseButton = By.xpath("//span[contains(.,'Close')]");
 const loginInput = By.className("text-input text-input-ios");
 const workBasketMenu = By.xpath("(//div[@class='input-wrapper'][contains(.,'Workbasket Claim')])[1]")
-const workBasketUrl = By.xpath("https://pruhub-stg.pru.intranet.asia/pruhub-2/#/claim")
+const workBasketUrl = "https://pruhub-stg.pru.intranet.asia/pruhub-2/#/claim"
+const okErr = By.xpath("//span[@class='button-inner'][contains(.,'OK')]");
+const avDecision1 = By.xpath("(//span[contains(@class,'button-inner')])[82]");
+const elAvDecision = By.xpath("(//span[contains(@class,'button-inner')])[86]");
+const avDecision2 = By.xpath("(//span[contains(@class,'button-inner')])[83]");
+const btnAvDecision = By.xpath("//span[@class='button-inner'][contains(.,'Complete Task')]");
+const msgOk = By.xpath("//span[@class='button-inner'][contains(.,'OK')]");
 
 module.exports = {
   workBasketUrl,
@@ -46,4 +52,10 @@ module.exports = {
   takeActionButton,
   toastCloseButton,
   loginInput,
+  okErr,
+  avDecision1,
+  avDecision2,
+  elAvDecision,
+  btnAvDecision,
+  msgOk,
 };

@@ -1,42 +1,52 @@
-const { By } = require("selenium-webdriver");
+const { By, Key } = require("selenium-webdriver");
 const { driver } = require("../util/driver");
 const { loadingWraper, caNum } = require("../util/element");
-const { waitInvisibility } = require("../util/helper");
+const {
+  waitInvisibility,
+  sleep,
+  clickAndWaitPageLoad,
+  waitVisibility,
+  click,
+} = require("../util/helper");
 
-const checkWorkbasket = async (cuNumber) => {
+const goToBank = async () => {
+  const baEl = By.xpath("(//a[contains(@ng-reflect-ng-class,'[object Object]')])[7]")
+  await waitVisibility(baEl)
+  const asdf = await driver.findElement(baEl)
+  
+  await driver.executeScript("arguments[0].click();", asdf)
   await waitInvisibility(loadingWraper);
-  let cuNumberElms = By.xpath(
-    "//span[@class='last-decision'][contains(.,'Admission ID : " +
-      paNumber +
-      "')]"
-  );
-  await driver.manage().setTimeouts({ implicit: 60000 });
-  const isCaseExists = (await driver.findElements(cuNumberElms).length) !== 0;
-  await driver.manage().setTimeouts({ implicit: 10000 });
-  // scroll to case
-  const el = await driver.findElement(cuNumberElms);
-  await el.getDriver().executeScript("arguments[0].scrollIntoView(true);", el);
-};
+}
+
+
+const cuNumEl = By.xpath(
+  "//input[contains(@placeholder,'Search by Claim Unique')]"
+);
+const linkEl = By.xpath("//ion-icon[contains(@name,'ios-arrow-forward')]");
 
 const viewDetailCase = async () => {
-  await checkWorkbasket(caNum);
-  let cuNumberElms = By.xpath(
-    "//span[@class='last-decision'][contains(.,'Admission ID : " +
-      paNumber +
-      "')]"
-  );
-  let attempts = 0;
-  while (attempts < 2) {
-    try {
-      await driver.findElement(cuNumberElms).click();
-      waitPageLoadUrl(url);
-      break;
-    } catch (error) {
-      console.log(
-        "case detail page is not showed, trying to click detail case again."
-      );
-    }
-    attempts++;
+  try {
+    await waitInvisibility(loadingWraper);
+    await waitVisibility(cuNumEl);
+    await sleep(10000);
+    const searchCuNum = await driver.findElement(cuNumEl);
+    searchCuNum.sendKeys(caNum, Key.TAB, Key.TAB, Key.ENTER);
+    await driver.manage().setTimeouts({ implicit: 10000 });
+    await waitInvisibility(loadingWraper);
+
+    await clickAndWaitPageLoad(
+      linkEl,
+      "https://pruhub-stg.pru.intranet.asia/pruhub-2/#/claim-review"
+    );
+    await waitInvisibility(loadingWraper)
+    console.log('inivis 1')
+    await waitInvisibility(loadingWraper)
+    console.log('inivis 2')
+    await waitInvisibility(loadingWraper)
+    console.log('inivis 3')
+    await goToBank()
+  } catch (error) {
+    console.log("error => workbasket", error);
   }
 };
 

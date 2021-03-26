@@ -7,7 +7,7 @@
     "test": "cucumber-js",
     "start": "cucumber-js ./src/features/"
   },
-  "author": "adam",
+  "author": "Aldita",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",

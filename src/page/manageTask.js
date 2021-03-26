@@ -76,6 +76,7 @@ const transferCaseToRightUser = async () => {
 
   await clickAndWaitToast(takeActionButton);
   await checkToastMsgAfterTransferCase();
+  console.log('sleep')
   await sleep(1000);
 };
 

@@ -46,7 +46,7 @@ const waitVisibility = async (by) => {
   try {
     let ele = await driver.wait(until.elementLocated(by), 30000);
     let foo = await ele.getText();
-    assert.strictEqual(foo === by);
+    console.log("waitVisibility ", foo);
   } catch (error) {
     console.log("waitVisibility error", error);
   }
@@ -56,12 +56,11 @@ const waitPageLoadUrl = async (url) => {
   try {
     let wait = await driver.wait(
       until.urlIs(url), //asdf
-      60000,
-      "Timed out after 30 seconds",
-      500
+      30000,
+      "Timed out after 30 seconds"
     );
-    const el = await wait.getText();
-    assert.strictEqual(el === url);
+    const el = await wait
+    console.log("waitPageLoadUrl", el);
   } catch (error) {
     console.log("waitPageLoadUrl error", error);
   }
@@ -70,13 +69,12 @@ const waitPageLoadUrl = async (url) => {
 const waitInvisibility = async (by) => {
   try {
     let foo = await driver.wait(
-      until.elementIsNotVisible(by),
-      60000,
-      "Timed out after 30 seconds",
-      500
+      until.stalenessOf(await driver.findElement(by)),
+      30000,
+      "wait invisibility"
     );
-    const el = await foo.getText();
-    assert.strictEqual(el === by);
+    const el = await foo;
+    console.log("waitInvisibility" , el);
   } catch (error) {
     console.log("error waitInvisibility", error);
   }
@@ -88,10 +86,9 @@ const waitClickable = async (by) => {
       until.elementLocated(by),
       60000,
       "Timed out after 30 seconds",
-      500
     );
     const el = await foo.getText();
-    assert.strictEqual(el === by);
+    console.log("waitClickable" , el);
   } catch (error) {
     console.log("error waitClickable", error);
   }
@@ -131,7 +128,7 @@ const clickAndWaitPageLoad = async (elementLocation, url) => {
 const inputField = async (element, val) => {
   try {
     const findElm = await driver.findElement(element);
-    logElement(findElm);
+    
     let actualText = "";
     try {
       findElm.sendKeys(val);
