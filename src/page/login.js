@@ -6,7 +6,7 @@ const username = "360718";
 const password = "P@Pru_36";
 
 const loginPage = async () => {
-  await driver.get("https://pruhub-stg.pru.intranet.asia/pruhub-2/#/login");
+  await driver.get("https://pruhub-stg.pru.intranet.asia/pruhub-2/");
 };
 
 const setUsernamAndPassword = async () => {

@@ -1,6 +1,6 @@
 const { By } = require("selenium-webdriver");
 const { okErr, loadingWraper, avDecision1, elAvDecision, avDecision2, btnAvDecision, msgOk } = require("../util/element");
-const { clickAndWaitPageLoad, click, waitInvisibility } = require("../util/helper");
+const { clickAndWaitPageLoad, click, waitInvisibility, waitVisibility } = require("../util/helper");
 
 const decisionTabEl = By.xpath("(//div[@class='input-wrapper'][contains(.,'Decision Claim')])[1]")
 
@@ -20,6 +20,7 @@ const selectDecision = async () => {
 const submitDecision = async () => {
     await click(btnAvDecision);
     await click(msgOk);
+    await waitVisibility(loadingWraper);
 }
 
 module.exports = {

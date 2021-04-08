@@ -20,7 +20,7 @@ const claimManageTask = By.xpath(
 const claimManageTaskUrl =
   "https://pruhub-stg.pru.intranet.asia/pruhub-2/#/manage-task-claim";
 
-const caNum = "CLAIM_2021032511360025836";
+const caNum = "CLAIM_2021040700101128181";
 const selectCaseButton = By.xpath("//input[contains(@id,'item_0')]");
 const toastMessage = By.xpath("//div[@class='toast-message']");
 const takeActionButton = By.xpath("//span[contains(.,'Take Action')]");
@@ -29,9 +29,9 @@ const loginInput = By.className("text-input text-input-ios");
 const workBasketMenu = By.xpath("(//div[@class='input-wrapper'][contains(.,'Workbasket Claim')])[1]")
 const workBasketUrl = "https://pruhub-stg.pru.intranet.asia/pruhub-2/#/claim"
 const okErr = By.xpath("//span[@class='button-inner'][contains(.,'OK')]");
-const avDecision1 = By.xpath("(//span[contains(@class,'button-inner')])[82]");
-const elAvDecision = By.xpath("(//span[contains(@class,'button-inner')])[86]");
-const avDecision2 = By.xpath("(//span[contains(@class,'button-inner')])[83]");
+const avDecision1 = By.xpath("(//span[contains(@class,'button-inner')])[100]");
+const elAvDecision = By.xpath("(//span[contains(@class,'button-inner')])[104]");
+const avDecision2 = By.xpath("(//span[contains(@class,'button-inner')])[101]");
 const btnAvDecision = By.xpath("//span[@class='button-inner'][contains(.,'Complete Task')]");
 const msgOk = By.xpath("//span[@class='button-inner'][contains(.,'OK')]");
 

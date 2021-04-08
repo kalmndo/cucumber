@@ -15,7 +15,7 @@ const { click } = require("../../util/helper");
 const { caNum, selectCaseButton } = require("../../util/element");
 const { goToDecisionTab, selectDecision, submitDecision } = require("../../page/decision");
 
-Given("I am on the pruhub login page", async function () {
+Given("I am on the pruhub login page",  async function () {
   await loginPage();
 });
 
